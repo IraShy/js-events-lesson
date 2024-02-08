@@ -13,6 +13,23 @@ function challengeOne() {
   document.querySelector("form").addEventListener("submit", onFormSubmit);
 }
 
+// -------
+
+function challengeTwo() {
+  const div = document.getElementById("challenge-two");
+  const button = document.getElementById("change-theme");
+
+  button.addEventListener("click", (event) => {
+    if (div.classList.contains("darkmode")) {
+      div.classList.remove("darkmode");
+      button.textContent = "Dark Mode";
+    } else {
+      div.classList.add("darkmode");
+      button.textContent = "Light Mode";
+    }
+  });
+}
+
 // do not change anything below this line
 
 function activity() {
