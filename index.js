@@ -30,6 +30,40 @@ function challengeTwo() {
   });
 }
 
+// -------
+
+function challengeThree() {
+  const dragger = document.getElementById("dragger");
+  const divs = document.querySelectorAll(".drag");
+
+  function handleDrop(event) {
+    const id = event.dataTransfer.getData("text/plain");
+    const dropTarget = event.target;
+
+    // prevent self-drop
+    if (dropTarget !== document.getElementById(id)) {
+      const child = document.getElementById(id);
+      dropTarget.appendChild(child);
+
+      // handle colour change on the last div
+      if (dropTarget.id === "to") {
+        dragger.style.backgroundColor = "green";
+      } else {
+        dragger.style.backgroundColor = "red";
+      }
+    }
+  }
+
+  divs.forEach((div) => {
+    div.addEventListener("dragover", (event) => event.preventDefault());
+    div.addEventListener("drop", handleDrop);
+  });
+
+  dragger.addEventListener("dragstart", (event) => {
+    event.dataTransfer.setData("text/plain", event.target.id);
+  });
+}
+
 // do not change anything below this line
 
 function activity() {
